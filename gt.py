@@ -31,7 +31,7 @@ class GT:
         url = self.url + "?op=translate"
         req = urllib.request.Request(url)
         req.add_header('User-Agent', self.user_agent)
-        res = urllib.request.urlopen(req).read().decode("utf8")
+        res = urllib.request.urlopen(req).read().decode("utf-8")
         self.cfb2h = re.findall("\"cfb2h\":\"(.*?)\"", res)[0]
         self.GWxKcf = re.findall("\"GWxKcf\":(.*?),", res)[0]
 
@@ -50,11 +50,12 @@ class GT:
         data = self.genForm(text, text_from, text_to)
         form = urllib.parse.urlencode(data)
         form = form.encode('ascii')
-        req = urllib.request.Request(url, data)
+        req = urllib.request.Request(url)
         req.add_header("User-Agent", self.user_agent)
-        res = urllib.request.urlopen(req, form).read().decode("utf8").split("\n")
+        res = urllib.request.urlopen(req, form).read().decode("utf-8").split("\n")
         json_1 = res[3][1::]  
         json_2 = json.loads(json_1)[2]
+        print()
         json_3 = json.loads(json_2)
         tl1 = json_3[0][0]
         tl2 = json_3[1][0][0][1] 
@@ -65,7 +66,7 @@ class GT:
             tl3s.append(dt1)
         tl3 = " ".join(tl3s)
         tl4 = json_3[1][4][0]
-        tf = json_3[1][4][1]
+        tf = json_3[0][2]
         tt = json_3[1][4][2]
         
         #output = [tl3, tl2, tl4, tl1, tf, tt]
@@ -77,3 +78,7 @@ class GT:
                   "lang_to": tt}
         
         return output
+
+    #this alias for def t
+    def text(self, text, text_from="auto", text_to="en"):
+      return self.t(text, text_from, text_to)
