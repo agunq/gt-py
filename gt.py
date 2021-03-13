@@ -66,9 +66,11 @@ class GT:
         tl3 = " ".join(tl3s)
         tl4 = json_3[1][4][0]
         tf = json_3[0][2]
+        if not tf:
+          tf = json_3[1][4][1]
         tt = json_3[1][4][2]
         
-        #output = [tl3, tl2, tl4, tl1, tf, tt]
+        output = [tl3, tl2, tl4, tl1, tf, tt]
         output = {"translate": tl3,
                   "pronunciation" : tl2,
                   "text": tl4,
