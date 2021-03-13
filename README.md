@@ -10,7 +10,7 @@ python tes.py
 from gt import GT
 
 tes = GT()
-print(tes.t("selamat pagi", "id", "ja"))
+print(tes.t("selamat pagi", "ja", "id"))
 ```
 
 will make dict() output
@@ -20,8 +20,10 @@ will make dict() output
 
 another example
 ``` py
+from gt import GT
+
 tes = GT()
-text = tes.text("good morning", "en", "ko")
+text = tes.text("good morning", "ko", "en")
 print(text["translate"])
 ```
 output
@@ -31,8 +33,10 @@ output
 
 and another one :v
 ``` py
+from gt import GT
+
 tes = GT()
-text = tes.text("좋은 아침", "auto", "en")
+text = tes.text("좋은 아침", "en")
 print(text["translate"])
 ```
 output
