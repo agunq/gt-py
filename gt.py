@@ -42,7 +42,7 @@ class GT:
         return url
 
     def genForm(self, text, text_from, text_to):
-        form = {"f.req" : "[[[\"MkEWBc\",\"[[\\\"%s\\\",\\\"%s\\\",\\\"%s\\\",true],[null]]\",null,\"generic\"]]]" % (text, text_from, text_to)}
+        form = {"f.req" : "[[[\"MkEWBc\",\"[[\\\"%s\\\",\\\"%s\\\",\\\"%s\\\",true],[null]]\",null,\"generic\"]]]" % (text.replace("\\", "\\\\\\\\"), text_from, text_to)}
         return form
         
     def t(self, text, text_to="en", text_from="auto"):
@@ -55,7 +55,6 @@ class GT:
         res = urllib.request.urlopen(req, form).read().decode("utf-8").split("\n")
         json_1 = res[3][1::]  
         json_2 = json.loads(json_1)[2]
-        
         json_3 = json.loads(json_2)
         tl1 = json_3[0][0]
         tl2 = json_3[1][0][0][1] 
