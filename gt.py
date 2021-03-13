@@ -42,10 +42,10 @@ class GT:
         return url
 
     def genForm(self, text, text_from, text_to):
-        form = {"f.req" : "[[[\"MkEWBc\",\"[[\\\"\%s\\\",\\\"%s\\\",\\\"%s\\\",true],[null]]\",null,\"generic\"]]]" % (text, text_from, text_to)}
+        form = {"f.req" : "[[[\"MkEWBc\",\"[[\\\"%s\\\",\\\"%s\\\",\\\"%s\\\",true],[null]]\",null,\"generic\"]]]" % (text, text_from, text_to)}
         return form
         
-    def t(self, text, text_from="auto", text_to="en"):
+    def t(self, text, text_to="en", text_from="auto"):
         url = self.genUrl()
         data = self.genForm(text, text_from, text_to)
         form = urllib.parse.urlencode(data)
@@ -80,5 +80,5 @@ class GT:
         return output
 
     #this alias for def t
-    def text(self, text, text_from="auto", text_to="en"):
-      return self.t(text, text_from, text_to)
+    def text(self, text, text_to="en", text_from="auto"):
+      return self.t(text, text_to, text_from)
