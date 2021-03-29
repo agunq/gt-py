@@ -70,7 +70,7 @@ class GT:
           tf = json_3[1][4][1]
         tt = json_3[1][4][2]
         
-        output = [tl3, tl2, tl4, tl1, tf, tt]
+        #output = [tl3, tl2, tl4, tl1, tf, tt]
         output = {"translate": tl3,
                   "pronunciation" : tl2,
                   "text": tl4,
