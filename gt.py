@@ -62,12 +62,14 @@ class GT:
         tl1 = json_3[0][0]
         tl2 = json_3[1][0][0][1] 
         tl3l = json_3[1][0][0][5]
-
-        #print(tl3l)
-        
+       
         tl3s = []
         for data in tl3l:
-            tl3s.append(data[1][0])
+            if len(data) == 1:
+                tl3s.append(data[0])
+            else:
+                tl3s.append(data[1][0])
+
         tl3 = " ".join(tl3s)
         
         
