@@ -49,21 +49,28 @@ class GT:
         url = self.genUrl()
         data = self.genForm(text, text_from, text_to)
         form = urllib.parse.urlencode(data)
-        form = form.encode('ascii')
+        form = form.encode('utf-8')
         req = urllib.request.Request(url)
         req.add_header("User-Agent", self.user_agent)
         res = urllib.request.urlopen(req, form).read().decode("utf-8").split("\n")
-        json_1 = res[3][1::]  
-        json_2 = json.loads(json_1)[2]
+        
+        json_1 = res[3]
+        json_2 = json.loads(json_1)[0][2]
         json_3 = json.loads(json_2)
+
+
         tl1 = json_3[0][0]
         tl2 = json_3[1][0][0][1] 
         tl3l = json_3[1][0][0][5]
+
+        #print(tl3l)
+        
         tl3s = []
         for data in tl3l:
-            dt1, dt2 = data
-            tl3s.append(dt1)
+            tl3s.append(data[1][0])
         tl3 = " ".join(tl3s)
+        
+        
         tl4 = json_3[1][4][0]
         tf = json_3[0][2]
         if not tf:
