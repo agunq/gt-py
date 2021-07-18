@@ -65,7 +65,7 @@ class GT:
        
         tl3s = []
         for data in tl3l:
-            if len(data) == 1:
+            if len(tl3l) == 1:
                 tl3s.append(data[0])
             else:
                 tl3s.append(data[1][0])
