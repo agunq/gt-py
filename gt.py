@@ -33,7 +33,7 @@ class GT:
         req.add_header('User-Agent', self.user_agent)
         res = urllib.request.urlopen(req).read().decode("utf-8")
         self.cfb2h = re.findall("\"cfb2h\":\"(.*?)\"", res)[0]
-        self.GWxKcf = re.findall("\"GWxKcf\":(.*?),", res)[0]
+        self.GWxKcf = random.randint(1000000, 9999999)  #re.findall("\"GWxKcf\":(.*?),", res)[0] idk what im doing :/
 
     def genUrl(self):
         self.genAuth()
